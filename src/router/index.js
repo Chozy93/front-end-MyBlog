@@ -1,23 +1,86 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
 
 Vue.use(VueRouter)
 
 const routes = [
+  
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import('../views/HomeView.vue')
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    component: () => import('../components/AboutView.vue')
+  },
+  {
+    path: '/booking',
+    name: 'booking',
+    component: () => import('../components/BookingView.vue')
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../components/ContactView.vue')
+  },
+  {
+    path: '/review',
+    name: 'review',
+    component: () => import('../components/ReviewView.vue')
+  },
+  {
+    path: '/service',
+    name: 'service',
+    component: () => import('../components/ServiceView.vue')
+  },
+  {
+    path: '/team',
+    name: 'team',
+    component: () => import('../components/TeamView.vue')
+  },
+  {
+    path: '/list',
+    name: 'list',
+    component: () => import('../components/tour/TourListView.vue')
+  },
+  {
+    path: "/tour/:bno",
+    name: "book-page",
+    component: () => import("@/components/tour/TourBookPage.vue")
+  },
+  {
+    path: "/check/tour",
+    name: "check-tour",
+    component: () => import("@/components/tour/TourBookCheck.vue")
+  },
+  {
+    path: '/faq',
+    name: 'faq',
+    component: () => import('../components/faq/FaqList.vue')
+  },
+  {
+    path: "/faq/:no",
+    name: "faq-details",
+    component: () => import("@/components/faq/FaqDetail")
+  },
+  {
+    path: '/qna',
+    name: 'qna',
+    component: () => import('../components/qna/QnaList.vue')
+  },
+  {
+    path: "/qna/:qno",
+    name: "faq-details",
+    component: () => import("@/components/qna/QnaDetail")
+  },
+  {
+    path: "/add/qna",
+    name: "add-qna",
+    component: () => import("@/components/qna/AddQna")
+  },
 ]
 
 const router = new VueRouter({
